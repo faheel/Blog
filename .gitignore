@@ -1,0 +1,5 @@
+*.pyc
+__pycache__
+FirstProject
+db.sqlite3
+/static
