@@ -7,16 +7,13 @@
             <h1><a href="">First Django blog</a></h1>
         </div>
 
-        <div>
-            <h2><a href="">My first post</a></h2>
-            <p>published: 14.08.2016, 12:27</p>
-            <p>Comme des Garçons the best conversation punctual. Bureaux classic eu incididunt, smart veniam ad the highest quality alluring. Craftsmanship Sunspel exquisite, eu ut intricate Zürich business class Shinkansen ex. Bespoke uniforms Singapore, pariatur lovely laborum mollit veniam Tsutaya conversation consequat alluring joy impeccable nulla. Adipisicing cutting-edge Gaggenau ut, aliquip sophisticated sleepy ut delightful qui vibrant bureaux signature consequat business class. Tote bag concierge duis, voluptate vibrant ut sleepy.</p>
-        </div>
-
-        <div>
-            <h2><a href="">My second post</a></h2>
-            <p>published: 14.09.2016, 17:42</p>
-            <p>Smart destination enim, exclusive remarkable handsome izakaya sleepy in et signature consequat. First-class tempor Winkreative perfect velit dolore Scandinavian nisi cillum ryokan. Uniforms charming Toto excepteur premium adipisicing ut delightful liveable Muji in the best. Nisi adipisicing first-class culpa Asia-Pacific dolore voluptate do pariatur ut in. Porter bespoke perfect essential magna izakaya.</p>
-        </div>
+        {% for post in posts %}
+            <div>
+                <h2><a href="">{{ post.title }}</a></h2>
+                <h4>Author: {{ post.author }}</h4>
+                <p>Published on: {{ post.published_date }}</p>
+                <p>{{ post.text | linebreaksbr}}</p>
+            </div>
+        {% endfor %}
     </body>
 </html>
