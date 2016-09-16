@@ -1,19 +1,13 @@
-<html>
-    <head>
-        <title>First Django blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">First Django blog</a></h1>
+{% extends 'blog/base.html' %}
+<!-- Posts -->
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <h2><a href="#">{{ post.title }}</a></h2>
+            <p class="author"><i class="fa fa-user" aria-hidden="true"></i> {{ post.author }}</p>
+            <p>{{ post.text | linebreaksbr }}</p>
+            <p class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.published_date }}</p>
         </div>
-
-        {% for post in posts %}
-            <div>
-                <h2><a href="">{{ post.title }}</a></h2>
-                <h4>Author: {{ post.author }}</h4>
-                <p>Published on: {{ post.published_date }}</p>
-                <p>{{ post.text | linebreaksbr}}</p>
-            </div>
-        {% endfor %}
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
+<!-- /Posts -->
