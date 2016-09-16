@@ -5,7 +5,7 @@
         <div class="post">
             <h2><a href="#">{{ post.title }}</a></h2>
             <p class="author"><i class="fa fa-user" aria-hidden="true"></i> {{ post.author }}</p>
-            <p>{{ post.text | linebreaksbr }}</p>
+            <p>{{ post.text | linebreaksbr | truncatewords:50 }}</p>
             <p class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.published_date }}</p>
         </div>
     {% endfor %}
