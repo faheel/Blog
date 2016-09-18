@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+<!-- Post -->
+{% block content %}
+<div class="post">
+    <h2>{{ post.title }}</h2>
+    <br>
+    <p class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.published_date }}</p>
+    <br>
+    <p>{{ post.text | linebreaksbr }}</p>
+    <br>
+    <p class="author"><i class="fa fa-user" aria-hidden="true"></i> {{ post.author }}</p>
+</div>
+{% endblock %}
+<!-- /Post -->
