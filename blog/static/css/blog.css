@@ -24,17 +24,43 @@ body {
 
 .save {
     float: right;
+    margin-top: 20px;
+    width: auto !important;
+}
+
+.form-title {
+    margin-top: 64px;
+}
+
+.post-form {
+    margin-top: 32px;
+    margin-bottom: 128px;
 }
 
 .post-form textarea, .post-form input {
     width: 100%;
+    margin-bottom: 20px;
+}
+
+.post-form .errorlist {
+    list-style-type: none;
+    color: #d32f2f;
 }
 
 .top-menu, .top-menu:hover, .top-menu:visited {
     color: #ffffff;
     float: right;
-    font-size: 26pt;
-    margin-right: 20px;
+}
+
+.breadcrumb {
+    background-color: #ffffff;
+    padding-left: 0;
+    padding-top: 32px;
+    margin-bottom: -32px;
+}
+
+.edit {
+    float: right;
 }
 
 .post {

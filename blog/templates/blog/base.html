@@ -24,7 +24,12 @@
     <body>
         <div class="page-header">
             <div class="container">
-                <h1><a href="/">First Django blog</a></h1>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'post_new' %}" class="top-menu">
+                        <i class="fa fa-plus-square fa-3x"></i>
+                    </a>
+                {% endif %}
+                <h1>First Django blog</h1>
             </div>
         </div>
 
