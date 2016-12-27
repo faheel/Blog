@@ -18,17 +18,26 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
-        <script src="https://use.fontawesome.com/5f3d7c3e14.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!-- /Fonts -->
     </head>
     <body>
         <div class="page-header">
             <div class="container">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'post_new' %}" class="top-menu">
-                        <i class="fa fa-plus-square fa-3x"></i>
-                    </a>
+                    <div>
+                        <a href="{% url 'post_new' %}" class="top-menu">
+                            <i class="material-icons">add_box</i>
+                            Add<br>post
+                        </a>
+                    </div>
                 {% endif %}
+                <div>
+                    <a href="{% url 'post_draft_list' %}" class="top-menu">
+                        <i class="material-icons">insert_drive_file</i>
+                        View<br>drafts
+                    </a>
+                </div>
                 <h1>First Django blog</h1>
             </div>
         </div>
