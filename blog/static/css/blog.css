@@ -1,11 +1,29 @@
 body {
     font-family: 'Roboto Slab', serif;
+    color: #263238;
+    background-color: #eceff1;
+}
+
+a {
+    color: #e91e63;
+}
+a:visited {
+    color: #d81b60;
+}
+a:hover {
+    color: #ec407a;
+}
+a:active {
+    color: #d81b60;
 }
 
 .page-header {
-    background-color: #2196F3;
+    background-color: #3f51b5;
     margin-top: 0;
     padding: 40px;
+}
+.page-header * {
+    color: #ffffff;
 }
 
 .page-header h1,
@@ -19,7 +37,7 @@ body {
 }
 
 .author, .date {
-    color: #828282;
+    color: #78909c;
 }
 
 .save {
@@ -44,19 +62,35 @@ body {
 
 .post-form .errorlist {
     list-style-type: none;
+    padding-left: 0;
     color: #d32f2f;
 }
 
 .top-menu, .top-menu:hover, .top-menu:visited {
     color: #ffffff;
     float: right;
+    margin-left: 16px;
+    text-decoration: none;
+}
+
+.top-menu .material-icons {
+    font-size: 36px;
+    display: block;
+    padding-bottom: 8px;
+}
+.post .material-icons {
+    font-size: 30px;
+    display: block;
+    padding-bottom: 8px;
 }
 
 .breadcrumb {
-    background-color: #ffffff;
     padding-left: 0;
     padding-top: 32px;
     margin-bottom: -32px;
+}
+.breadcrumb-item.active {
+    color: #607d8b;
 }
 
 .edit {
@@ -65,14 +99,17 @@ body {
 
 .post {
     margin: 64px 0;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .post h2 a, .post h2 a:visited {
-    color: #0d47a1;
+    color: #e91e63;
 }
 
 @media screen and (max-width: 620px) {
-    .content, .page-header {
+    .page-header {
         padding-left: 20px;
     }
 }
