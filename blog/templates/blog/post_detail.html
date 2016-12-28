@@ -10,7 +10,7 @@
     <div class="post">
         {% if user.is_authenticated %}
             <div>
-                <a class="edit" href="{% url 'post_edit' post_id=post.pk %}">
+                <a class="edit-post-link" href="{% url 'post_edit' post_id=post.pk %}">
                     <i class="material-icons">edit</i>
                     Edit<br>post
                 </a>
