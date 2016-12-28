@@ -4,10 +4,18 @@
     <!-- Posts -->
     {% for post in posts %}
         <div class="post">
-            <h2><a href="{% url 'post_detail' post_id=post.pk %}">{{ post.title }}</a></h2>
-            <p class="author"><i class="fa fa-user" aria-hidden="true"></i> {{ post.author }}</p>
+            <h2>
+                <a href="{% url 'post_detail' post_id=post.pk %}">{{ post.title }}</a>
+            </h2>
+            <p class="author">
+                <i class="material-icons">person</i>
+                {{ post.author }}
+            </p>
             <p>{{ post.text | truncatewords:50 }}</p>
-            <p class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.published_date }}</p>
+            <p class="date">
+                <i class="material-icons">date_range</i>
+                {{ post.published_date }}
+            </p>
         </div>
     {% endfor %}
     <!-- /Posts -->

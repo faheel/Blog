@@ -1,26 +1,23 @@
 body {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Roboto', serif;
     color: #263238;
     background-color: #eceff1;
 }
 
-a {
-    color: #e91e63;
-}
-a:visited {
-    color: #d81b60;
-}
-a:hover {
-    color: #ec407a;
-}
-a:active {
-    color: #d81b60;
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
 }
 
+a, a:active, a:hover, a:active, a:focus, a:visited { text-decoration: none }
+a { color: #e91e63 }
+a:hover { color: #d81b60 }
+a:active, a:focus { color: #c2185b }
+a:visited { color: #9c27b0 }
+
 .page-header {
-    background-color: #3f51b5;
     margin-top: 0;
     padding: 40px;
+    background-color: #3f51b5;
 }
 .page-header * {
     color: #ffffff;
@@ -83,6 +80,11 @@ a:active {
     display: block;
     padding-bottom: 8px;
 }
+.author .material-icons, .date .material-icons {
+    font-size: 22px;
+    display: inline;
+    vertical-align: top;
+}
 
 .breadcrumb {
     padding-left: 0;
@@ -104,8 +106,10 @@ a:active {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
-.post h2 a, .post h2 a:visited {
-    color: #e91e63;
+.form-control, .btn{
+    border: 0;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 @media screen and (max-width: 620px) {
