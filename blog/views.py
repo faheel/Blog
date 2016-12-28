@@ -8,8 +8,10 @@ def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
+# List of unpublished posts (drafts)
 def post_draft_list(request):
-    post = Post.objects.filter(published_date__isnull=True).order_by(created_date)
+    posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')
+    return render(request, 'blog/post_draft_list.html', {'posts': posts})
 
 # Detailed page for a post
 def post_detail(request, post_id):
@@ -42,3 +44,15 @@ def post_edit(request, post_id):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
+# Publish a post
+def post_publish(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    post.publish()
+    return redirect('post_detail', post_id=post_id)
+
+# Remove a post
+def post_remove(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    post.delete()
+    return redirect('post_list')

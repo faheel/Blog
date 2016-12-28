@@ -13,8 +13,8 @@
             </p>
             <p>{{ post.text | truncatewords:50 }}</p>
             <p class="date">
-                <i class="material-icons">event_available</i>
-                {{ post.published_date | date:'d M, Y' }}
+                <i class="material-icons">date_range</i>
+                {{ post.created_date | date:'d M, Y' }}
             </p>
         </div>
     {% endfor %}

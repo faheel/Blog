@@ -9,19 +9,34 @@
     <!-- Post -->
     <div class="post">
         {% if user.is_authenticated %}
-            <div>
-                <a class="edit-post-link" href="{% url 'post_edit' post_id=post.pk %}">
-                    <i class="material-icons">edit</i>
-                    Edit<br>post
+            <a class="post-action centre" href="{% url 'post_edit' post_id=post.pk %}">
+                <i class="material-icons">edit</i>
+                Edit
+            </a>
+            <a class="post-action centre" href="{% url 'post_remove' post_id=post.pk %}">
+                <i class="material-icons">clear</i>
+                Remove
+            </a>
+            {% if not post.published_date %}
+                <a class="post-action centre" href="{% url 'post_publish' post_id=post.pk %}">
+                    <i class="material-icons">done</i>
+                    Publish
                 </a>
-            </div>
+            {% endif %}
         {% endif %}
-        <h2>{{ post.title }}</h2>
+        <h1>{{ post.title }}</h1>
         <br>
-        <p class="date">
-            <i class="material-icons">date_range</i>
-            {{ post.published_date }}
-        </p>
+        {% if post.published_date %}
+            <p class="date">
+                <i class="material-icons">event_available</i>
+                {{ post.published_date }}
+            </p>
+        {% else %}
+            <p class="date">
+                <i class="material-icons">event_busy</i>
+                Unpublished
+            </p>
+        {% endif %}
         <br>
         <p>{{ post.text | linebreaksbr }}</p>
         <br>
