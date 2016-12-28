@@ -6,30 +6,43 @@ body {
 
 h1, h2, h3, h4, h5, h6 { font-weight: 300 }
 
+p { font-size: 18px }
+
 a, a:active, a:hover, a:active, a:focus, a:visited { text-decoration: none }
-a { color: #e91e63 }
-a:hover { color: #d81b60 }
-a:active, a:focus { color: #c2185b }
+a { color: #3f51b5 }
+a:hover { color: #5c6bc0 }
+a:active, a:focus { color: #3949ab }
 a:visited { color: #9c27b0 }
+
+.btn-primary { background-color: #673ab7 }
+.btn-primary:hover, .btn-primary:focus { background-color: #5e35b1 }
+.btn-primary:active:focus { background-color: #7e57c2 }
+.btn-primary:focus, .btn-primary:active:focus { outline: 0 none }
+
+::selection { background: rgba(103,58,183,0.2) }
+::-moz-selection { background: rgba(103,58,183,0.2) }
 
 .page-header {
     margin-top: 0;
     padding: 40px;
-    background-color: #3f51b5;
+    background-color: #673ab7;
 }
-.page-header * { color: #ffffff }
+.page-header * { color: #fff }
 
 .page-header h1,
 .page-header h1 a,
 .page-header h1 a:hover,
 .page-header h1 a:visited,
 .page-header h1 a:active {
-    color: #ffffff;
+    color: #fff;
     font-size: 36pt;
     text-decoration: none;
 }
 
-.author, .date { color: #78909c }
+.author, .date {
+    color: #78909c;
+    font-size: 16px;
+}
 
 .save {
     float: right;
@@ -55,12 +68,12 @@ a:visited { color: #9c27b0 }
     color: #d32f2f;
 }
 
-.top-menu, .top-menu:hover, .top-menu:visited {
+.top-menu {
     float: right;
     margin-left: 16px;
-    text-decoration: none;
-    color: #ffffff;
+    color: #fff;
 }
+.top-menu:hover, .top-menu:visited { color: #fff }
 
 .top-menu .material-icons {
     font-size: 36px;
@@ -88,7 +101,8 @@ a:visited { color: #9c27b0 }
 .post {
     margin: 64px 0;
     padding: 20px;
-    background-color: #ffffff;
+    border-radius: 2px;
+    background-color: #fff;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
@@ -98,7 +112,12 @@ a:visited { color: #9c27b0 }
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
-.edit-post-link { float: right }
+.post-action {
+    float: right;
+    margin-left: 16px;
+}
+
+.centre { text-align: center }
 
 @media screen and (max-width: 620px) {
     .page-header {
