@@ -42,14 +42,12 @@ a:visited { color: #9c27b0 }
     vertical-align: top;
 }
 .logout { float: right }
+.logout a { color: #fff }
+.logout * { font-size: 16px }
 .logout .material-icons {
     margin-left: 8px;
     font-size: 28px;
     vertical-align: top;
-}
-.logout a:hover, .logout a:visited { color: #fff }
-.logout * {
-    font-size: 16px;
 }
 
 .author, .date {
