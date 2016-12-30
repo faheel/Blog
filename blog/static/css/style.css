@@ -57,9 +57,9 @@ a:visited { color: #9c27b0 }
     font-size: 16px;
 }
 
-.save {
+.btn-submit {
     float: right;
-    margin-top: 20px;
+    margin-top: 10px;
     width: auto !important;
 }
 
@@ -78,6 +78,11 @@ a:visited { color: #9c27b0 }
 .post-form .errorlist {
     list-style-type: none;
     padding-left: 0;
+    color: #d32f2f;
+}
+
+.error-text {
+    font-size: 16px;
     color: #d32f2f;
 }
 
@@ -119,6 +124,12 @@ a:visited { color: #9c27b0 }
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
+.login-box {
+    margin: 64px auto;
+    max-width: 330px;
+    padding: 20px;
+}
+
 .form-control, .btn{
     border: 0;
     border-radius: 2px;
@@ -145,7 +156,9 @@ a:visited { color: #9c27b0 }
         padding-right: 0px;
     }
 
-    .post {
-        border-radius: 0;
+    .breadcrumb {
+        padding-left: 20px;
     }
+
+    .post { border-radius: 0 }
 }

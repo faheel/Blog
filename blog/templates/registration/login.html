@@ -1,24 +1,30 @@
 {% extends "blog/base.html" %}
 
 {% block content %}
-    {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
-    {% endif %}
+    <nav class="breadcrumb">
+        <a class="breadcrumb-item" href="/">Home</a>
+        <span class="breadcrumb-item active">Log in</span>
+    </nav>
 
-    <form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-        <table>
-        <tr>
-            <td>{{ form.username.label_tag }}</td>
-            <td>{{ form.username }}</td>
-        </tr>
-        <tr>
-            <td>{{ form.password.label_tag }}</td>
-            <td>{{ form.password }}</td>
-        </tr>
-        </table>
+    <!-- Login form -->
+    <div class="login-box">
+        <h1>Log in</h1>
+        <br>
+        {% if form.errors %}
+            <p class="error-text">Your username and password didn't match. Please try again.</p>
+        {% endif %}
 
-        <input type="submit" value="login" />
-        <input type="hidden" name="next" value="{{ next }}" />
-    </form>
+        <form class="form-signin" method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+            <label for="id_username" class="sr-only">Username</label>
+            <input type="text" id="id_username" maxlength="128" name="username" class="form-control" placeholder="Username" required autofocus>
+            <br>
+            <label for="id_password" class="sr-only">Password</label>
+            <input type="password" id="id_password" name="password" class="form-control" placeholder="Password" required>
+            <br>
+            <button class="btn btn-primary btn-submit" type="submit" value="login">Submit</button>
+            <input type="hidden" name="next" value="{{ next }}">
+      </form>
+    </div>
+    <!-- /Login form -->
 {% endblock %}
