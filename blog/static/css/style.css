@@ -25,18 +25,31 @@ a:visited { color: #9c27b0 }
 .page-header {
     margin-top: 0;
     padding: 40px;
+    color: #fff;
     background-color: #673ab7;
 }
-.page-header * { color: #fff }
+.page-header h1 { font-size: 36pt }
 
-.page-header h1,
-.page-header h1 a,
-.page-header h1 a:hover,
-.page-header h1 a:visited,
-.page-header h1 a:active {
+.user-bar {
+    padding: 16px 40px 0 40px;
     color: #fff;
-    font-size: 36pt;
-    text-decoration: none;
+    background-color: #512da8;
+}
+.user { float: left }
+.user .material-icons {
+    margin-right: 8px;
+    font-size: 30px;
+    vertical-align: top;
+}
+.logout { float: right }
+.logout .material-icons {
+    margin-left: 8px;
+    font-size: 28px;
+    vertical-align: top;
+}
+.logout a:hover, .logout a:visited { color: #fff }
+.logout * {
+    font-size: 16px;
 }
 
 .author, .date {
@@ -120,8 +133,19 @@ a:visited { color: #9c27b0 }
 .centre { text-align: center }
 
 @media screen and (max-width: 620px) {
-    .page-header {
+    .page-header, .user-bar {
         padding-left: 20px;
         padding-right: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .post {
+        border-radius: 0;
     }
 }

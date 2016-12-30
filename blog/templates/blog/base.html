@@ -13,7 +13,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <!-- /Meta tags -->
 
-        <title>1st django Blog</title>
+        <title>Blog</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
@@ -37,10 +37,30 @@
                         <i class="material-icons">insert_drive_file</i>
                         View<br>drafts
                     </a>
+                {% else %}
+                    <a class="top-menu centre" href="{% url 'login' %}">
+                        <i class="material-icons">account_circle</i>
+                        Log in
+                    </a>
                 {% endif %}
-                <h1>1st <b>django</b> Blog</h1>
+                <h1>Blog</h1>
             </div>
         </div>
+
+        {% if user.is_authenticated %}
+            <div class="user-bar">
+                <div class="container">
+                    <p class="user">
+                        <i class="material-icons">account_circle</i> {{ user.username }}
+                    </p>
+                    <p class="logout">
+                        <a href="{% url 'logout' %}">
+                            Log out <i class="material-icons">exit_to_app</i>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        {% endif %}
 
         <div class="content">
             <div class="container">
