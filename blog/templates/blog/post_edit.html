@@ -23,13 +23,13 @@
     </h2>
 
     <!-- Form -->
-    <form class="post-form" method="POST">
+    <form class="post-form" method="post">
     {% csrf_token %}
         <div class="form-group">
             <label class="control-label" for="id_{{ form.title.name }}">{{ form.title.label }}</label>
             {{ form.title.errors }}
-            <input class="form-control"
-                type="text"
+            <input type="text"
+                class="form-control"
                 name="{{ form.title.name }}"
                 id="id_{{ form.title.name }}"
                 placeholder="A nice title for your post"

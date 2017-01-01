@@ -19,6 +19,8 @@ a:visited { color: #9c27b0 }
 .btn-primary:active:focus { background-color: #7e57c2 }
 .btn-primary:focus, .btn-primary:active:focus { outline: 0 none }
 
+a.btn-primary:visited { color:#fff }
+
 ::selection { background: rgba(103,58,183,0.2) }
 ::-moz-selection { background: rgba(103,58,183,0.2) }
 
@@ -48,11 +50,6 @@ a:visited { color: #9c27b0 }
     margin-left: 8px;
     font-size: 28px;
     vertical-align: top;
-}
-
-.author, .date {
-    color: #78909c;
-    font-size: 16px;
 }
 
 .btn-submit {
@@ -101,11 +98,18 @@ a:visited { color: #9c27b0 }
     display: block;
     padding-bottom: 8px;
 }
-.author .material-icons, .date .material-icons {
+
+.post-stat {
+    color: #78909c;
+    font-size: 16px;
+}
+.post-stat .material-icons {
     font-size: 22px;
     display: inline;
     vertical-align: top;
 }
+/*.post-stat[name="date"] { float: left }
+.post-stat[name="comments"] { float: left }*/
 
 .breadcrumb {
     padding-left: 0;
@@ -122,8 +126,20 @@ a:visited { color: #9c27b0 }
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
+.comment {
+    margin: 20px 0px 20px 10px;
+    padding: 0 10px 0 20px;
+    border-left: 3px solid #673ab7;
+}
+.comment p {
+    font-size: 16px;
+    padding: 0;
+    margin: 2px auto;
+}
+.comment p[name="author"] { color: #512da8 }
+
 .login-box {
-    margin: 64px auto;
+    margin: 48px auto;
     max-width: 330px;
     padding: 20px;
 }
@@ -149,6 +165,8 @@ a:visited { color: #9c27b0 }
 }
 
 @media screen and (max-width: 480px) {
+    p { font-size: 16px }
+
     .container {
         padding-left: 0px;
         padding-right: 0px;
@@ -159,4 +177,10 @@ a:visited { color: #9c27b0 }
     }
 
     .post { border-radius: 0 }
+
+    .comment {
+        margin: 20px 0px 20px 0;
+        padding: 0 0 0 10px;
+    }
+    .comment p { font-size: 14px }
 }

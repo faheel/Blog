@@ -26,24 +26,44 @@
         {% endif %}
         <h1>{{ post.title }}</h1>
         <br>
-        {% if post.published_date %}
-            <p class="date">
+        <p class="post-stat" name="date">
+            {% if post.published_date %}
                 <i class="material-icons">event_available</i>
                 {{ post.published_date }}
-            </p>
-        {% else %}
-            <p class="date">
+            {% else %}
                 <i class="material-icons">event_busy</i>
                 Unpublished
-            </p>
-        {% endif %}
+            {% endif %}
+        </p>
         <br>
         <p>{{ post.text | linebreaksbr }}</p>
         <br>
-        <p class="author">
+        <p class="post-stat" name="author">
             <i class="material-icons">person</i>
             {{ post.author }}
         </p>
     </div>
     <!-- /Post -->
+
+    <!--<a class="btn btn-primary" href="{% url 'add_comment' post_id=post.pk %}">Comment</a>-->
+
+    <!-- Comments -->
+    <div class="post">
+        <a class="post-action centre" href="{% url 'add_comment' post_id=post.pk %}">
+            <i class="material-icons">comment</i>
+            Comment
+        </a>
+        <h2>Comments</h2>
+        <br>
+        {% for comment in post.comments.all %}
+            <div class="comment">
+                <p name="author">{{ comment.author }}</p>
+                <div class="post-stat" name="date">{{ comment.created_date }}</div>
+                <p>{{ comment.text | linebreaks }}</p>
+            </div>
+        {% empty %}
+            <p>No comments on this post yet</p>
+        {% endfor %}
+    </div>
+    <!-- /Comments -->
 {% endblock %}
