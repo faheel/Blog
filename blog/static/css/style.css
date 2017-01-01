@@ -58,12 +58,9 @@ a.btn-primary:visited { color:#fff }
     width: auto !important;
 }
 
-.form-title { margin-top: 64px }
+.form-title { margin: 64px 20px 0 20px }
 
-.post-form {
-    margin-top: 32px;
-    margin-bottom: 128px;
-}
+.post-form { margin: 32px 20px 128px 20px }
 
 .post-form textarea, .post-form input {
     width: 100%;
@@ -165,8 +162,6 @@ a.btn-primary:visited { color:#fff }
 }
 
 @media screen and (max-width: 480px) {
-    p { font-size: 16px }
-
     .container {
         padding-left: 0px;
         padding-right: 0px;
@@ -182,5 +177,4 @@ a.btn-primary:visited { color:#fff }
         margin: 20px 0px 20px 0;
         padding: 0 0 0 10px;
     }
-    .comment p { font-size: 14px }
 }
