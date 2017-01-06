@@ -45,8 +45,6 @@
     </div>
     <!-- /Post -->
 
-    <!--<a class="btn btn-primary" href="{% url 'add_comment' post_id=post.pk %}">Comment</a>-->
-
     <!-- Comments -->
     <div class="post">
         <a class="post-action centre" href="{% url 'add_comment' post_id=post.pk %}">
@@ -56,11 +54,23 @@
         <h2>Comments</h2>
         <br>
         {% for comment in post.comments.all %}
-            <div class="comment">
-                <p name="author">{{ comment.author }}</p>
-                <div class="post-stat" name="date">{{ comment.created_date }}</div>
-                <p>{{ comment.text | linebreaks }}</p>
-            </div>
+            {% if comment.is_approved or user.is_authenticated %}
+                <div class="comment">
+                    {% if not comment.is_approved %}
+                        <a class="post-action centre" href="{% url 'remove_comment' comment_id=comment.pk %}">
+                            <i class="material-icons">clear</i>
+                            Remove
+                        </a>
+                        <a class="post-action centre" href="{% url 'approve_comment' comment_id=comment.pk %}">
+                            <i class="material-icons">done</i>
+                            Approve
+                        </a>
+                    {% endif %}
+                    <p name="author">{{ comment.author }}</p>
+                    <div class="post-stat" name="date">{{ comment.created_date }}</div>
+                    <p>{{ comment.text | linebreaks }}</p>
+                </div>
+            {% endif %}
         {% empty %}
             <p>No comments on this post yet</p>
         {% endfor %}

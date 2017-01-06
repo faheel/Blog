@@ -91,7 +91,6 @@ a.btn-primary:visited { color:#fff }
     padding-bottom: 8px;
 }
 .post .material-icons {
-    font-size: 30px;
     display: block;
     padding-bottom: 8px;
 }
@@ -123,6 +122,12 @@ a.btn-primary:visited { color:#fff }
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
+.post-action {
+    float: right;
+    margin-left: 16px;
+    font-size: 14px;
+}
+
 .comment {
     margin: 20px 0px 20px 10px;
     padding: 0 10px 0 20px;
@@ -145,11 +150,6 @@ a.btn-primary:visited { color:#fff }
     border: 0;
     border-radius: 2px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-
-.post-action {
-    float: right;
-    margin-left: 16px;
 }
 
 .centre { text-align: center }

@@ -13,6 +13,9 @@ class Post(models.Model):
         self.published_date = timezone.now()
         self.save()
 
+    def approved_comments(self):
+        return self.comments.filter(is_approved=True)
+
     def __str__(self):
         return self.title
 
