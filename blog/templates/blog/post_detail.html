@@ -9,6 +9,7 @@
     <!-- Post -->
     <div class="post">
         {% if user.is_authenticated %}
+            <!-- Post controls -->
             <a class="post-action centre" href="{% url 'post_edit' post_id=post.pk %}">
                 <i class="material-icons">edit</i>
                 Edit
@@ -23,6 +24,7 @@
                     Publish
                 </a>
             {% endif %}
+            <!-- /Post controls -->
         {% endif %}
         <h1>{{ post.title }}</h1>
         <br>
@@ -45,35 +47,39 @@
     </div>
     <!-- /Post -->
 
-    <!-- Comments -->
-    <div class="post">
-        <a class="post-action centre" href="{% url 'add_comment' post_id=post.pk %}">
-            <i class="material-icons">comment</i>
-            Comment
-        </a>
-        <h2>Comments</h2>
-        <br>
-        {% for comment in post.comments.all %}
-            {% if comment.is_approved or user.is_authenticated %}
-                <div class="comment">
-                    {% if not comment.is_approved %}
-                        <a class="post-action centre" href="{% url 'remove_comment' comment_id=comment.pk %}">
-                            <i class="material-icons">clear</i>
-                            Remove
-                        </a>
-                        <a class="post-action centre" href="{% url 'approve_comment' comment_id=comment.pk %}">
-                            <i class="material-icons">done</i>
-                            Approve
-                        </a>
-                    {% endif %}
-                    <p name="author">{{ comment.author }}</p>
-                    <div class="post-stat" name="date">{{ comment.created_date }}</div>
-                    <p>{{ comment.text | linebreaks }}</p>
-                </div>
-            {% endif %}
-        {% empty %}
-            <p>No comments on this post yet</p>
-        {% endfor %}
-    </div>
-    <!-- /Comments -->
+    {% if post.published_date %}
+        <!-- Comments -->
+        <div class="post">
+            <a class="post-action centre" href="{% url 'add_comment' post_id=post.pk %}">
+                <i class="material-icons">comment</i>
+                Comment
+            </a>
+            <h2>Comments</h2>
+            <br>
+            {% for comment in post.comments.all %}
+                {% if comment.is_approved or user.is_authenticated %}
+                    <div class="comment">
+                        {% if not comment.is_approved %}
+                            <!-- Comment controls -->
+                            <a class="post-action centre" href="{% url 'remove_comment' comment_id=comment.pk %}">
+                                <i class="material-icons">clear</i>
+                                Remove
+                            </a>
+                            <a class="post-action centre" href="{% url 'approve_comment' comment_id=comment.pk %}">
+                                <i class="material-icons">done</i>
+                                Approve
+                            </a>
+                            <!-- /Comment controls -->
+                        {% endif %}
+                        <p name="author">{{ comment.author }}</p>
+                        <div class="post-stat" name="date">{{ comment.created_date }}</div>
+                        <p>{{ comment.text | linebreaks }}</p>
+                    </div>
+                {% endif %}
+            {% empty %}
+                <p>No comments on this post yet</p>
+            {% endfor %}
+        </div>
+        <!-- /Comments -->
+    {% endif %}
 {% endblock %}
