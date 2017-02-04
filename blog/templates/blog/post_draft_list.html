@@ -1,31 +1,31 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <nav class="breadcrumb">
-        <a class="breadcrumb-item" href="/">Home</a>
-        <span class="breadcrumb-item active">Drafts</span>
-    </nav>
+  <nav class="breadcrumb">
+    <a class="breadcrumb-item" href="/">Home</a>
+    <span class="breadcrumb-item active">Drafts</span>
+  </nav>
 
-    <!-- Posts -->
-    {% for post in posts %}
-        <div class="post">
-            <h1>
-                <a href="{% url 'post_detail' post_id=post.pk %}">{{ post.title }}</a>
-            </h1>
-            <p class="post-stat" name="author">
-                <i class="material-icons">person</i>
-                {{ post.author }}
-            </p>
-            <p>{{ post.text | truncatewords:50 }}</p>
-            <div class="post-stat" name="date">
-                <i class="material-icons">date_range</i>
-                {{ post.created_date | date:'d M, Y' }}
-            </div>
-        </div>
-    {% empty %}
-        <div class="post">
-            <p>No drafts to review</p>
-        </div>
-    {% endfor %}
-    <!-- /Posts -->
+  <!-- Posts -->
+  {% for post in posts %}
+    <div class="post">
+      <h1>
+        <a href="{% url 'post_detail' post_id=post.pk %}">{{ post.title }}</a>
+      </h1>
+      <p class="post-stat" name="author">
+        <i class="material-icons">person</i>
+        {{ post.author }}
+      </p>
+      <p>{{ post.text | truncatewords:50 }}</p>
+      <div class="post-stat" name="date">
+        <i class="material-icons">date_range</i>
+        {{ post.created_date | date:'d M, Y' }}
+      </div>
+    </div>
+  {% empty %}
+    <div class="post">
+      <p>No drafts to review</p>
+    </div>
+  {% endfor %}
+  <!-- /Posts -->
 {% endblock %}

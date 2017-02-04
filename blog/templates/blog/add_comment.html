@@ -1,36 +1,40 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <nav class="breadcrumb">
-        <a class="breadcrumb-item" href="/">Home</a>
-        <a class="breadcrumb-item" href="{% url 'post_detail' post_id=post.pk %}">{{ post.title }}</a>
-        <span class="breadcrumb-item active">Add comment</span>
-    </nav>
+  <nav class="breadcrumb">
+    <a class="breadcrumb-item" href="/">Home</a>
+    <a class="breadcrumb-item" href="{% url 'post_detail' post_id=post.pk %}">{{ post.title }}</a>
+    <span class="breadcrumb-item active">Add comment</span>
+  </nav>
 
-    <h2 class="form-title">
-        Add comment
-    </h2>
+  <h2 class="form-title">
+    Add comment
+  </h2>
 
-    <form class="post-form" method="post">
-    {% csrf_token %}
-        <div class="form-group">
-            <label class="control-label" for="id_{{ form.author.name }}">{{ form.author.label }}</label>
-            {{ form.author.errors }}
-            <input type="text"
-                class="form-control"
-                name="{{ form.author.name }}"
-                id="id_{{ form.author.name }}"
-                placeholder="Your name">
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="id_{{ form.text.name }}">{{ form.text.label }}</label>
-            {{ form.text.errors }}
-            <textarea class="form-control"
-                name="{{ form.text.name }}"
-                id="id_{{ form.text.name }}"
-                placeholder="A worthy comment..."
-                rows="10">{% if form.text.value %}{{ form.text.value }}</textarea>{% else %}</textarea>{% endif %}
-        </div>
-        <input type="submit" class="btn btn-primary btn-submit">
-    </form>
+  <form class="post-form" method="post">
+  {% csrf_token %}
+    <div class="form-group">
+      <label class="control-label" for="id_{{ form.author.name }}">{{ form.author.label }}</label>
+      {{ form.author.errors }}
+      <input type="text"
+        class="form-control"
+        name="{{ form.author.name }}"
+        id="id_{{ form.author.name }}"
+        placeholder="Your name">
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="id_{{ form.text.name }}">{{ form.text.label }}</label>
+      {{ form.text.errors }}
+      <textarea class="form-control"
+        name="{{ form.text.name }}"
+        id="id_{{ form.text.name }}"
+        placeholder="A worthy comment..."
+        rows="10">
+          {% if form.text.value %}
+            {{ form.text.value }}
+          {% endif %}
+      </textarea>
+    </div>
+    <input type="submit" class="btn btn-primary btn-submit">
+  </form>
 {% endblock %}

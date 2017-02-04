@@ -1,50 +1,54 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <nav class="breadcrumb">
-        <a class="breadcrumb-item" href="/">Home</a>
-        <span class="breadcrumb-item active">
-            {% if request.path == '/post/new/' %}
-                New
-            {% else %}
-                Edit
-            {% endif %}
-            post
-        </span>
-    </nav>
+  <nav class="breadcrumb">
+    <a class="breadcrumb-item" href="/">Home</a>
+    <span class="breadcrumb-item active">
+      {% if request.path == '/post/new/' %}
+        New
+      {% else %}
+        Edit
+      {% endif %}
+      post
+    </span>
+  </nav>
 
-    <h2 class="form-title">
-        {% if request.path == '/post/new/' %}
-            New
-        {% else %}
-            Edit
-        {% endif %}
-        post
-    </h2>
+  <h2 class="form-title">
+    {% if request.path == '/post/new/' %}
+      New
+    {% else %}
+      Edit
+    {% endif %}
+    post
+  </h2>
 
-    <!-- Form -->
-    <form class="post-form" method="post">
-    {% csrf_token %}
-        <div class="form-group">
-            <label class="control-label" for="id_{{ form.title.name }}">{{ form.title.label }}</label>
-            {{ form.title.errors }}
-            <input type="text"
-                class="form-control"
-                name="{{ form.title.name }}"
-                id="id_{{ form.title.name }}"
-                placeholder="A nice title for your post"
-                value="{% if form.title.value %}{{ form.title.value }}{% endif %}">
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="id_{{ form.text.name }}">{{ form.text.label }}</label>
-            {{ form.text.errors }}
-            <textarea class="form-control"
-                name="{{ form.text.name }}"
-                id="id_{{ form.text.name }}"
-                placeholder="Great content goes here"
-                rows="10">{% if form.text.value %}{{ form.text.value }}</textarea>{% else %}</textarea>{% endif %}
-        </div>
-        <input type="submit" value="Save" class="btn btn-primary btn-submit">
-    </form>
-    <!-- /Form -->
+  <!-- Form -->
+  <form class="post-form" method="post">
+  {% csrf_token %}
+    <div class="form-group">
+      <label class="control-label" for="id_{{ form.title.name }}">{{ form.title.label }}</label>
+      {{ form.title.errors }}
+      <input type="text"
+        class="form-control"
+        name="{{ form.title.name }}"
+        id="id_{{ form.title.name }}"
+        placeholder="A nice title for your post"
+        value="{% if form.title.value %}{{ form.title.value }}{% endif %}">
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="id_{{ form.text.name }}">{{ form.text.label }}</label>
+      {{ form.text.errors }}
+      <textarea class="form-control"
+        name="{{ form.text.name }}"
+        id="id_{{ form.text.name }}"
+        placeholder="Great content goes here"
+        rows="10">
+          {% if form.text.value %}
+            {{ form.text.value }}
+          {% endif %}
+      </textarea>
+    </div>
+    <input type="submit" value="Save" class="btn btn-primary btn-submit">
+  </form>
+  <!-- /Form -->
 {% endblock %}

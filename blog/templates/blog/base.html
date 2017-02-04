@@ -2,78 +2,80 @@
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <!-- Meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <meta name="theme-color" content="#673ab7">
+    <meta name="theme-color" content="#673ab7">
 
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <!-- /Meta tags -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- /Meta tags -->
 
-        <title>Blog</title>
+    <title>Blog</title>
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        <!-- /CSS -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-markdown/2.10.0/css/bootstrap-markdown.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- /CSS -->
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <!-- /Fonts -->
-    </head>
-    <body>
-        <div class="page-header">
-            <div class="container">
-                {% if user.is_authenticated %}
-                    <a class="top-menu centre" href="{% url 'post_new' %}">
-                        <i class="material-icons">add_box</i>
-                        Add<br>post
-                    </a>
-                    <a class="top-menu centre" href="{% url 'post_draft_list' %}">
-                        <i class="material-icons">insert_drive_file</i>
-                        View<br>drafts
-                    </a>
-                {% else %}
-                    <a class="top-menu centre" href="{% url 'login' %}">
-                        <i class="material-icons">account_circle</i>
-                        Log in
-                    </a>
-                {% endif %}
-                <h1>Blog</h1>
-            </div>
-        </div>
-
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- /Fonts -->
+  </head>
+  <body>
+    <div class="page-header">
+      <div class="container">
         {% if user.is_authenticated %}
-            <div class="user-bar">
-                <div class="container">
-                    <p class="user">
-                        <i class="material-icons">account_circle</i> {{ user.username }}
-                    </p>
-                    <p class="logout">
-                        <a href="{% url 'logout' %}">
-                            Log out <i class="material-icons">exit_to_app</i>
-                        </a>
-                    </p>
-                </div>
-            </div>
+          <a class="top-menu centre" href="{% url 'post_new' %}">
+            <i class="material-icons">add_box</i>
+            Add<br>post
+          </a>
+          <a class="top-menu centre" href="{% url 'post_draft_list' %}">
+            <i class="material-icons">insert_drive_file</i>
+            View<br>drafts
+          </a>
+        {% else %}
+          <a class="top-menu centre" href="{% url 'login' %}">
+            <i class="material-icons">account_circle</i>
+            Log in
+          </a>
         {% endif %}
+        <h1>Blog</h1>
+      </div>
+    </div>
 
-        <div class="content">
-            <div class="container">
-                {% block content %}
-                {% endblock %}
-            </div>
+    {% if user.is_authenticated %}
+      <div class="user-bar">
+        <div class="container">
+          <p class="user">
+            <i class="material-icons">account_circle</i> {{ user.username }}
+          </p>
+          <p class="logout">
+            <a href="{% url 'logout' %}">
+              Log out <i class="material-icons">exit_to_app</i>
+            </a>
+          </p>
         </div>
+      </div>
+    {% endif %}
 
-        <!-- Scripts -->
-        <!-- jQuery first, then Tether, then Bootstrap JS. -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js"></script>
-        <!-- /Scripts -->
-    </body>
+    <div class="content">
+      <div class="container">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-markdown/2.10.0/js/bootstrap-markdown.min.js"></script>
+    <!-- /Scripts -->
+  </body>
 </html>

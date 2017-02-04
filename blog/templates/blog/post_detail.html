@@ -1,85 +1,85 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <nav class="breadcrumb">
-        <a class="breadcrumb-item" href="/">Home</a>
-        <span class="breadcrumb-item active">{{ post.title }}</span>
-    </nav>
+  <nav class="breadcrumb">
+    <a class="breadcrumb-item" href="/">Home</a>
+    <span class="breadcrumb-item active">{{ post.title }}</span>
+  </nav>
 
-    <!-- Post -->
+  <!-- Post -->
+  <div class="post">
+    {% if user.is_authenticated %}
+      <!-- Post controls -->
+      <a class="post-action centre" href="{% url 'post_edit' post_id=post.pk %}">
+        <i class="material-icons">edit</i>
+        Edit
+      </a>
+      <a class="post-action centre" href="{% url 'post_remove' post_id=post.pk %}">
+        <i class="material-icons">clear</i>
+        Remove
+      </a>
+      {% if not post.published_date %}
+        <a class="post-action centre" href="{% url 'post_publish' post_id=post.pk %}">
+          <i class="material-icons">done</i>
+          Publish
+        </a>
+      {% endif %}
+      <!-- /Post controls -->
+    {% endif %}
+    <h1>{{ post.title }}</h1>
+    <br>
+    <p class="post-stat" name="date">
+      {% if post.published_date %}
+        <i class="material-icons">event_available</i>
+        {{ post.published_date }}
+      {% else %}
+        <i class="material-icons">event_busy</i>
+        Unpublished
+      {% endif %}
+    </p>
+    <br>
+    <p>{{ post.text | linebreaksbr }}</p>
+    <br>
+    <p class="post-stat" name="author">
+      <i class="material-icons">person</i>
+      {{ post.author }}
+    </p>
+  </div>
+  <!-- /Post -->
+
+  {% if post.published_date %}
+    <!-- Comments -->
     <div class="post">
-        {% if user.is_authenticated %}
-            <!-- Post controls -->
-            <a class="post-action centre" href="{% url 'post_edit' post_id=post.pk %}">
-                <i class="material-icons">edit</i>
-                Edit
-            </a>
-            <a class="post-action centre" href="{% url 'post_remove' post_id=post.pk %}">
+      <a class="post-action centre" href="{% url 'add_comment' post_id=post.pk %}">
+        <i class="material-icons">comment</i>
+        Comment
+      </a>
+      <h2>Comments</h2>
+      <br>
+      {% for comment in post.comments.all %}
+        {% if comment.is_approved or user.is_authenticated %}
+          <div class="comment">
+            {% if not comment.is_approved %}
+              <!-- Comment controls -->
+              <a class="post-action centre" href="{% url 'remove_comment' comment_id=comment.pk %}">
                 <i class="material-icons">clear</i>
                 Remove
-            </a>
-            {% if not post.published_date %}
-                <a class="post-action centre" href="{% url 'post_publish' post_id=post.pk %}">
-                    <i class="material-icons">done</i>
-                    Publish
-                </a>
+              </a>
+              <a class="post-action centre" href="{% url 'approve_comment' comment_id=comment.pk %}">
+                <i class="material-icons">done</i>
+                Approve
+              </a>
+              <!-- /Comment controls -->
             {% endif %}
-            <!-- /Post controls -->
+            <p name="author">{{ comment.author }}</p>
+            <div class="post-stat" name="date">{{ comment.created_date }}</div>
+            <p>{{ comment.text | linebreaks }}</p>
+          </div>
         {% endif %}
-        <h1>{{ post.title }}</h1>
-        <br>
-        <p class="post-stat" name="date">
-            {% if post.published_date %}
-                <i class="material-icons">event_available</i>
-                {{ post.published_date }}
-            {% else %}
-                <i class="material-icons">event_busy</i>
-                Unpublished
-            {% endif %}
-        </p>
-        <br>
-        <p>{{ post.text | linebreaksbr }}</p>
-        <br>
-        <p class="post-stat" name="author">
-            <i class="material-icons">person</i>
-            {{ post.author }}
-        </p>
+      {% empty %}
+        <p>No comments on this post yet</p>
+      {% endfor %}
     </div>
-    <!-- /Post -->
-
-    {% if post.published_date %}
-        <!-- Comments -->
-        <div class="post">
-            <a class="post-action centre" href="{% url 'add_comment' post_id=post.pk %}">
-                <i class="material-icons">comment</i>
-                Comment
-            </a>
-            <h2>Comments</h2>
-            <br>
-            {% for comment in post.comments.all %}
-                {% if comment.is_approved or user.is_authenticated %}
-                    <div class="comment">
-                        {% if not comment.is_approved %}
-                            <!-- Comment controls -->
-                            <a class="post-action centre" href="{% url 'remove_comment' comment_id=comment.pk %}">
-                                <i class="material-icons">clear</i>
-                                Remove
-                            </a>
-                            <a class="post-action centre" href="{% url 'approve_comment' comment_id=comment.pk %}">
-                                <i class="material-icons">done</i>
-                                Approve
-                            </a>
-                            <!-- /Comment controls -->
-                        {% endif %}
-                        <p name="author">{{ comment.author }}</p>
-                        <div class="post-stat" name="date">{{ comment.created_date }}</div>
-                        <p>{{ comment.text | linebreaks }}</p>
-                    </div>
-                {% endif %}
-            {% empty %}
-                <p>No comments on this post yet</p>
-            {% endfor %}
-        </div>
-        <!-- /Comments -->
-    {% endif %}
+    <!-- /Comments -->
+  {% endif %}
 {% endblock %}
