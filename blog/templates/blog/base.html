@@ -38,7 +38,7 @@
             <i class="material-icons">insert_drive_file</i>
             View<br>drafts
           </a>
-        {% else %}
+        {% elif request.get_full_path != "/accounts/login/"%}
           <a class="top-menu centre" href="{% url 'login' %}">
             <i class="material-icons">account_circle</i>
             Log in
